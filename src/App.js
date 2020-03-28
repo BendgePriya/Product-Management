@@ -1,11 +1,10 @@
 import React from 'react';
 import './App.css';
-import Homepage from './components/pages/homepage';
-
+import ProdContainer from './containers/prodContainer'
 function App() {
   return (
     <div className="App">
-      <Homepage/>
+      <ProdContainer />
     </div>
   );
 }

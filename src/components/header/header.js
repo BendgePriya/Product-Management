@@ -37,6 +37,7 @@ export default class Header extends Component {
       <div>
          <AddNewProduct
          toggleNewProductModal={this.toggleNewProductModal}
+         addNewProduct={this.props.addNewProduct}
          />
       </div>
       )

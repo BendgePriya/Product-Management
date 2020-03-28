@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { css } from 'emotion';
-import {PROD_HEADING} from '../constants/productconst'
+import { PROD_HEADING } from '../constants/productconst'
 import './styles.css';
 
 class AddNewProduct extends Component {
@@ -10,17 +10,22 @@ class AddNewProduct extends Component {
       tempDistrictsIds: [], // this variable is going to hold temporary data so
       //that upon clicking on cancel button we will not have any impact on old data
       tempApps: [],
-      showDist: false,
-      showApps: false,
+      tempProd : {
+        prod_name : '',
+        prod_desc : '',
+        is_active : '',
+        price : '',
+        offer_price : '',
+        offer_starts_at : '',
+        offer_ends_at : '',
+        created_at : '',
+        updated_at : ''
+      },
       showMsg: false,
-      display: false,
-      displayApps: false,
-      groupName: '',
       requiredStyle: false
     };
     this.node = null;
   }
-  distIds = []; //this variable will hold group ids of groups.
 
   UNSAFE_componentWillMount() {
     document.addEventListener('mousedown', this.handleClick, false);
@@ -41,42 +46,39 @@ class AddNewProduct extends Component {
     this.handleClickOutside();
   };
 
-  handleGroupNameChange = event => {
-    this.setState({
-      groupName: event.target.value
-    });
-  };
-
-  componentDidMount() {
-    if (this.distIds !== undefined) {
-      this.setState({ tempDistrictsIds: this.distIds.slice(0) });
-    }
-  }
   handleCancleBtn = () => {
     this.props.toggleNewProductModal();
   };
-  handleCreateGroup = () => {
-    if (this.props.districtsData.selectedIds.length === 0) {
+  
+  handleAddNewProduct = () => {
+    let tempProd = this.state.tempProd
+    if (tempProd.prod_name.length === 0) {
       this.setState({ requiredStyle: true, showMsg: true });
     } else {
       this.props.toggleNewProductModal();
-      var obj = {};
-      obj['group_name'] = this.state.groupName;
-      obj['district_ids'] = this.props.districtsData.selectedIds;
-      obj['apps'] = this.props.appsData.selectedApps;
-      obj['apis'] = this.props.apisData.selectedApis;
-      this.props.createGroup(obj);
+      this.props.addNewProduct(tempProd);
     }
   };
-  displayInputFields = (fieldLable) =>{
-     return Object.keys(fieldLable).map((lable,i) => {
-          console.log(fieldLable[lable])
+
+  handleInputChange = (label, event) => {
+    let inputName = label;
+    let inputValue = event.target.value;
+    let prodCopy = Object.assign({}, this.state);
+    prodCopy.tempProd[inputName] = inputValue;
+    this.setState(prodCopy);
+  };
+
+  displayInputFields = (fieldLabel) =>{
+     return Object.keys(fieldLabel).map((label,i) => {
+       const divStyle = 
+       (label === 'prod_name' && this.state.requiredStyle && this.state.tempProd.prod_name.length === 0) 
+       ? requiredinputContainer : inputContainer
           return (
-            <div className={inputContainer} key={i}>
+            <div className={divStyle} key={i}>
                 <input
                 className={inputStyle}
-                placeholder={fieldLable[lable]}
-                //   onChange={this.handleGroupNameChange.bind(this)}
+                placeholder={fieldLabel[label]}
+                onChange={this.handleInputChange.bind(this, label)}
                 />
           </div>
           )
@@ -93,78 +95,14 @@ class AddNewProduct extends Component {
           </div>
           <div className={inputFields + ' thin-vert-scrollbar'}>
               {this.displayInputFields(fieldLable)}
-          {/* <div className={inputContainer}>
-            <input
-              className={inputStyle}
-              placeholder="Product Name*"
-            //   onChange={this.handleGroupNameChange.bind(this)}
-            />
-          </div>
-          <div className={inputContainer}>
-            <input
-              className={inputStyle}
-              placeholder="Product Description"
-            //   onChange={this.handleGroupNameChange.bind(this)}
-            />
-          </div>
-          <div className={inputContainer}>
-            <input
-              className={inputStyle}
-              placeholder="Is Active"
-            //   onChange={this.handleGroupNameChange.bind(this)}
-            />
-          </div>
-          <div className={inputContainer}>
-            <input
-              className={inputStyle}
-              placeholder="Price($"
-            //   onChange={this.handleGroupNameChange.bind(this)}
-            />
-          </div>
-          <div className={inputContainer}>
-            <input
-              className={inputStyle}
-              placeholder="Offer Price($)"
-            //   onChange={this.handleGroupNameChange.bind(this)}
-            />
-          </div>
-          <div className={inputContainer}>
-            <input
-              className={inputStyle}
-              placeholder="Offer Starts At"
-            //   onChange={this.handleGroupNameChange.bind(this)}
-            />
-          </div>
-          <div className={inputContainer}>
-            <input
-              className={inputStyle}
-              placeholder="Offer Ends At"
-            //   onChange={this.handleGroupNameChange.bind(this)}
-            />
-          </div>
-          <div className={inputContainer}>
-            <input
-              className={inputStyle}
-              placeholder="Created At"
-            //   onChange={this.handleGroupNameChange.bind(this)}
-            />
-          </div>
-          <div className={inputContainer}>
-            <input
-              className={inputStyle}
-              placeholder="Updated At"
-            //   onChange={this.handleGroupNameChange.bind(this)}
-            />
-          </div> */}
-          </div>
-          
+          </div>       
           <div className={bottomBarStyle}>
             <div className={cancleBtn} onClick={() => this.handleCancleBtn()}>
               CANCEL
             </div>
             <div
               className={createGroupBtn}
-              onClick={() => this.handleCreateGroup()}>
+              onClick={() => this.handleAddNewProduct()}>
               ADD
             </div>
           </div>
@@ -219,7 +157,14 @@ const inputContainer = css({
   height: '56px',
   margin: '0 16px 16px 16px'
 });
-
+const requiredinputContainer = css({
+  display: 'flex',
+  alignItems: 'center',
+  height: '56px',
+  margin: '0 16px 16px 16px',
+  borderRadius: '2px',
+  border: 'solid 1px #ff5630'
+});
 const title = css({
   paddingLeft: '16px',
   fontFamily: 'Open Sans',
@@ -273,7 +218,7 @@ const cancleBtn = css({
   lineHeight: 1.5,
   letterSpacing: '1px',
   textAlign: 'center',
-  color: '#c1c7d0',
+  color: '#9499a1',
   cursor: 'pointer'
 });
 
