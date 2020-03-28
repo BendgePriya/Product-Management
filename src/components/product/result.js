@@ -22,6 +22,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import Button from '../button/button'
 import AddEditProduct from '../modal/add-edit-product'
+import DeleteConfirmation from '../modal/delete-confirmation-modal';
 
 const StyledTableCell = withStyles(theme => ({
     head: {
@@ -147,7 +148,7 @@ const useToolbarStyles = makeStyles(theme => ({
 
 const EnhancedTableToolbar = props => {
   const classes = useToolbarStyles();
-  const { numSelected } = props;
+  const { numSelected, handleDeleteProduct} = props;
 
   return (
     <Toolbar
@@ -167,7 +168,7 @@ const EnhancedTableToolbar = props => {
       {numSelected > 0 ? (
         <Tooltip title="Delete">
           <IconButton aria-label="delete">
-            <DeleteIcon />
+            <DeleteIcon  onClick={handleDeleteProduct}/>
           </IconButton>
         </Tooltip>
       ) : (
@@ -222,6 +223,7 @@ export default function Result(props) {
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
+  const [deleteConfirmModal, setDeleteConfirmModal] = React.useState(false);
   const [showEditModal, setShowEditModal] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const [selectedIndex, setSelectedIndex] = React.useState(-1)
@@ -280,7 +282,9 @@ export default function Result(props) {
   const toggleEditProductModal = () => {
     setShowEditModal(!showEditModal)
   }
-
+  const handleDeleteProduct =() => {
+    setDeleteConfirmModal(!deleteConfirmModal)
+  }
   const showUpdateProductModal = ()=> {
     if(showEditModal){
       return(
@@ -295,6 +299,15 @@ export default function Result(props) {
       )
     }
   }
+  const showDeleteConfirmationModal = () =>{
+    if(deleteConfirmModal){
+      return(
+        <div>
+          <DeleteConfirmation/>
+        </div>
+      )
+    }
+  }
 
   const isSelected = name => selected.indexOf(name) !== -1;
 
@@ -304,7 +317,8 @@ export default function Result(props) {
     <div className={classes.root}>
       <Paper className={classes.paper}>
         {showUpdateProductModal()}
-        <EnhancedTableToolbar numSelected={selected.length} />
+        {showDeleteConfirmationModal()}
+        <EnhancedTableToolbar numSelected={selected.length} handleDeleteProduct={handleDeleteProduct} />
         <TableContainer>
           <Table
             className={classes.table}
