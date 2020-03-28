@@ -1,0 +1,290 @@
+
+{"products" : [
+    {
+        "prod_name":"Product A",
+        "prod_desc":"Lorum ipsum",
+        "is_active":"true",
+        "price":20.45,
+        "offer_price":18,
+        "offer_starts_at":"2020-02-03T00:00:00", 
+        "offer_ends_at":"2020-02-03T00:00:00",
+        "created_at":"2020-02-03T00:00:00",
+        "updated_at":"2020-02-03T00:00:00" 
+    },
+    {
+        "prod_name":"Product B",
+        "prod_desc":"White Coffee Filters",
+        "is_active":"true",
+        "price":44,
+        "offer_price":34,
+        "offer_starts_at":"2020-02-03T00:00:00", 
+        "offer_ends_at":"2020-02-03T00:00:00",
+        "created_at":"2020-02-03T00:00:00",
+        "updated_at":"2020-02-03T00:00:00" 
+    },
+    {
+        "prod_name":"Product C",
+        "prod_desc":"Mr. Coffee Switch ",
+        "is_active":"true",
+        "price":14,
+        "offer_price":12,
+        "offer_starts_at":"2020-02-03T00:00:00", 
+        "offer_ends_at":"2020-02-03T00:00:00",
+        "created_at":"2020-02-03T00:00:00",
+        "updated_at":"2020-02-03T00:00:00" 
+    },
+    {
+        "prod_name":"Product D",
+        "prod_desc":"LGal Latch",
+        "is_active":"true",
+        "price":44,
+        "offer_price":30,
+        "offer_starts_at":"2020-02-03T00:00:00", 
+        "offer_ends_at":"2020-02-03T00:00:00",
+        "created_at":"2020-02-03T00:00:00",
+        "updated_at":"2020-02-03T00:00:00" 
+    },
+    {
+        "prod_name":"Product E",
+        "prod_desc":"Driscoll Raspberries'",
+        "is_active":"true",
+        "price":34,
+        "offer_price":32,
+        "offer_starts_at":"2020-02-03T00:00:00", 
+        "offer_ends_at":"2020-02-03T00:00:00",
+        "created_at":"2020-02-03T00:00:00",
+        "updated_at":"2020-02-03T00:00:00" 
+    },
+    {
+        "prod_name":"Product F",
+        "prod_desc":"Doritos Nacho Cheese Chips",
+        "is_active":"false",
+        "price":8.7,
+        "offer_price":6,
+        "offer_starts_at":"2020-02-03T00:00:00", 
+        "offer_ends_at":"2020-02-03T00:00:00",
+        "created_at":"2020-02-03T00:00:00",
+        "updated_at":"2020-02-03T00:00:00" 
+    },
+    {
+        "prod_name":"Product G",
+        "prod_desc":"Organic Whole Milk",
+        "is_active":"true",
+        "price":30,
+        "offer_price":24,
+        "offer_starts_at":"2020-02-03T00:00:00", 
+        "offer_ends_at":"2020-02-03T00:00:00",
+        "created_at":"2020-02-03T00:00:00",
+        "updated_at":"2020-02-03T00:00:00" 
+    },
+    {
+        "prod_name":"Product H",
+        "prod_desc":"Doritos Nacho Cheese Chips",
+        "is_active":"true",
+        "price":60,
+        "offer_price":54,
+        "offer_starts_at":"2020-02-03T00:00:00", 
+        "offer_ends_at":"2020-02-03T00:00:00",
+        "created_at":"2020-02-03T00:00:00",
+        "updated_at":"2020-02-03T00:00:00" 
+    },
+    {
+        "prod_name":"Product I",
+        "prod_desc":"Long Puff Sleeve T-Shirt",
+        "is_active":"false",
+        "price":12,
+        "offer_price":10,
+        "offer_starts_at":"2020-02-03T00:00:00", 
+        "offer_ends_at":"2020-02-03T00:00:00",
+        "created_at":"2020-02-03T00:00:00",
+        "updated_at":"2020-02-03T00:00:00" 
+    },
+    {
+        "prod_name":"Product J",
+        "prod_desc":"Doritos Nacho Cheese Chips",
+        "is_active":"true",
+        "price":15.67,
+        "offer_price":14,
+        "offer_starts_at":"2020-02-03T00:00:00", 
+        "offer_ends_at":"2020-02-03T00:00:00",
+        "created_at":"2020-02-03T00:00:00",
+        "updated_at":"2020-02-03T00:00:00" 
+    },
+    {
+        "prod_name":"Product K",
+        "prod_desc":"Magical Mixer Baby Doll",
+        "is_active":"true",
+        "price":9.08,
+        "offer_price":7,
+        "offer_starts_at":"2020-02-03T00:00:00", 
+        "offer_ends_at":"2020-02-03T00:00:00",
+        "created_at":"2020-02-03T00:00:00",
+        "updated_at":"2020-02-03T00:00:00" 
+    },
+    {
+        "prod_name":"Product L",
+        "prod_desc":"Lorum ipsum",
+        "is_active":"true",
+        "price":44,
+        "offer_price":34,
+        "offer_starts_at":"2020-02-03T00:00:00", 
+        "offer_ends_at":"2020-02-03T00:00:00",
+        "created_at":"2020-02-03T00:00:00",
+        "updated_at":"2020-02-03T00:00:00" 
+    },
+    {
+        "prod_name":"Product M",
+        "prod_desc":"Lorum ipsum",
+        "is_active":"true",
+        "price":15,
+        "offer_price":13,
+        "offer_starts_at":"2020-02-03T00:00:00", 
+        "offer_ends_at":"2020-02-03T00:00:00",
+        "created_at":"2020-02-03T00:00:00",
+        "updated_at":"2020-02-03T00:00:00" 
+    },
+    {
+        "prod_name":"Product N",
+        "prod_desc":"Lorum ipsum",
+        "is_active":"true",
+        "price":8.067,
+        "offer_price":7,
+        "offer_starts_at":"2020-02-03T00:00:00", 
+        "offer_ends_at":"2020-02-03T00:00:00",
+        "created_at":"2020-02-03T00:00:00",
+        "updated_at":"2020-02-03T00:00:00" 
+    },
+    {
+        "prod_name":"Product O",
+        "prod_desc":"Lorum ipsum",
+        "is_active":"true",
+        "price":44,
+        "offer_price":34,
+        "offer_starts_at":"2020-02-03T00:00:00", 
+        "offer_ends_at":"2020-02-03T00:00:00",
+        "created_at":"2020-02-03T00:00:00",
+        "updated_at":"2020-02-03T00:00:00" 
+    },
+    {
+        "prod_name":"Product P",
+        "prod_desc":"Lorum ipsum",
+        "is_active":"true",
+        "price":44,
+        "offer_price":34,
+        "offer_starts_at":"2020-02-03T00:00:00", 
+        "offer_ends_at":"2020-02-03T00:00:00",
+        "created_at":"2020-02-03T00:00:00",
+        "updated_at":"2020-02-03T00:00:00" 
+    },
+    {
+        "prod_name":"Product Q",
+        "prod_desc":"Lorum ipsum",
+        "is_active":"true",
+        "price":44,
+        "offer_price":34,
+        "offer_starts_at":"2020-02-03T00:00:00", 
+        "offer_ends_at":"2020-02-03T00:00:00",
+        "created_at":"2020-02-03T00:00:00",
+        "updated_at":"2020-02-03T00:00:00" 
+    },
+    {
+        "prod_name":"Product R",
+        "prod_desc":"Lorum ipsum",
+        "is_active":"true",
+        "price":44,
+        "offer_price":34,
+        "offer_starts_at":"2020-02-03T00:00:00", 
+        "offer_ends_at":"2020-02-03T00:00:00",
+        "created_at":"2020-02-03T00:00:00",
+        "updated_at":"2020-02-03T00:00:00" 
+    },
+    {
+        "prod_name":"Product S",
+        "prod_desc":"Lorum ipsum",
+        "is_active":"true",
+        "price":44,
+        "offer_price":34,
+        "offer_starts_at":"2020-02-03T00:00:00", 
+        "offer_ends_at":"2020-02-03T00:00:00",
+        "created_at":"2020-02-03T00:00:00",
+        "updated_at":"2020-02-03T00:00:00" 
+    }, 
+    {
+        "prod_name":"Product T",
+        "prod_desc":"Lorum ipsum",
+        "is_active":"true",
+        "price":44,
+        "offer_price":34,
+        "offer_starts_at":"2020-02-03T00:00:00", 
+        "offer_ends_at":"2020-02-03T00:00:00",
+        "created_at":"2020-02-03T00:00:00",
+        "updated_at":"2020-02-03T00:00:00" 
+    }, 
+    {
+        "prod_name":"Product U",
+        "prod_desc":"Lorum ipsum",
+        "is_active":"true",
+        "price":44,
+        "offer_price":34,
+        "offer_starts_at":"2020-02-03T00:00:00", 
+        "offer_ends_at":"2020-02-03T00:00:00",
+        "created_at":"2020-02-03T00:00:00",
+        "updated_at":"2020-02-03T00:00:00" 
+    }, 
+    {
+        "prod_name":"Product v",
+        "prod_desc":"Lorum ipsum",
+        "is_active":"true",
+        "price":44,
+        "offer_price":34,
+        "offer_starts_at":"2020-02-03T00:00:00", 
+        "offer_ends_at":"2020-02-03T00:00:00",
+        "created_at":"2020-02-03T00:00:00",
+        "updated_at":"2020-02-03T00:00:00" 
+    },
+    {
+        "prod_name":"Product W",
+        "prod_desc":"Lorum ipsum",
+        "is_active":"true",
+        "price":44,
+        "offer_price":34,
+        "offer_starts_at":"2020-02-03T00:00:00", 
+        "offer_ends_at":"2020-02-03T00:00:00",
+        "created_at":"2020-02-03T00:00:00",
+        "updated_at":"2020-02-03T00:00:00" 
+    },
+    {
+        "prod_name":"Product X",
+        "prod_desc":"Lorum ipsum",
+        "is_active":"true",
+        "price":44,
+        "offer_price":34,
+        "offer_starts_at":"2020-02-03T00:00:00", 
+        "offer_ends_at":"2020-02-03T00:00:00",
+        "created_at":"2020-02-03T00:00:00",
+        "updated_at":"2020-02-03T00:00:00" 
+    },
+    {
+        "prod_name":"Product Y",
+        "prod_desc":"Lorum ipsum",
+        "is_active":"true",
+        "price":44,
+        "offer_price":34,
+        "offer_starts_at":"2020-02-03T00:00:00", 
+        "offer_ends_at":"2020-02-03T00:00:00",
+        "created_at":"2020-02-03T00:00:00",
+        "updated_at":"2020-02-03T00:00:00" 
+    },
+    {
+        "prod_name":"Product Z",
+        "prod_desc":"Lorum ipsum",
+        "is_active":"true",
+        "price":44,
+        "offer_price":34,
+        "offer_starts_at":"2020-02-03T00:00:00", 
+        "offer_ends_at":"2020-02-03T00:00:00",
+        "created_at":"2020-02-03T00:00:00",
+        "updated_at":"2020-02-03T00:00:00" 
+    }
+]
+}

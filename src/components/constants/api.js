@@ -1,0 +1,1 @@
+export const API_ROOT = ' http://www.mocky.io/v2/5e7efc04300000c7584afbd2'
