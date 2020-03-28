@@ -20,6 +20,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
+import Button from '../button/button'
 
 const StyledTableCell = withStyles(theme => ({
     head: {
@@ -59,14 +60,15 @@ function stableSort(array, comparator) {
 
 const headCells = [
   { id: 'prod_name', numeric: false, disablePadding: true, label: 'Product Name' },
-  { id: 'prod_desc', numeric: false, disablePadding: true, label: 'Product Description' },
-  { id: 'is_active', numeric: false, disablePadding: true, label: 'Is Active' },
+  { id: 'prod_desc', numeric: false, disablePadding: false, label: 'Product Description' },
+  { id: 'is_active', numeric: false, disablePadding: false, label: 'Is Active' },
   { id: 'price', numeric: true, disablePadding: false, label: 'Price($)' },
   { id: 'offer_price', numeric: true, disablePadding: false, label: 'Offer Price($)' },
   { id: 'offer_starts_at', numeric: false, disablePadding: false, label: 'Offer Starts At' },
   { id: 'offer_ends_at', numeric: false, disablePadding: false, label: 'Offer Ends At' },
   { id: 'created_at', numeric: false, disablePadding: false, label: 'Created At' },
-  { id: 'updated_at', numeric: false, disablePadding: false, label: 'Updated At' }
+  { id: 'updated_at', numeric: false, disablePadding: false, label: 'Updated At' },
+  { id: 'action', label: 'Action'}
 ];
 
 function EnhancedTableHead(props) {
@@ -206,6 +208,9 @@ const useStyles = makeStyles(theme => ({
     top: 20,
     width: 1,
   },
+  btnStyle:{
+    color: theme.palette.text.primary
+  }
 }));
 
 export default function Result(props) {
@@ -296,7 +301,6 @@ export default function Result(props) {
                 .map((row, index) => {
                   const isItemSelected = isSelected(row.prod_name);
                   const labelId = `enhanced-table-checkbox-${index}`;
-
                   return (
                     <TableRow
                       hover
@@ -324,6 +328,9 @@ export default function Result(props) {
                       <TableCell align="left">{row.offer_ends_at}</TableCell>
                       <TableCell align="left">{row.created_at}</TableCell>
                       <TableCell align="left">{row.updated_at}</TableCell>
+                      <TableCell align="center">
+                        <Button text="edit" buttonTextStyle={classes.btnStyle} />
+                      </TableCell>
                     </TableRow>
                   );
                 })}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { css } from 'emotion';
 import { PROD_HEADING } from '../constants/productconst'
+import TextField from '@material-ui/core/TextField';
 import './styles.css';
 
 class AddNewProduct extends Component {
@@ -68,16 +69,35 @@ class AddNewProduct extends Component {
      return Object.keys(fieldLabel).map((label,i) => {
        const divStyle = 
        (label === 'prod_name' && this.state.requiredStyle && this.state.tempProd.prod_name.length === 0) 
-       ? requiredinputContainer : inputContainer
-          return (
-            <div className={divStyle} key={i}>
-                <input
-                className={inputStyle}
-                placeholder={fieldLabel[label]}
-                onChange={this.handleInputChange.bind(this, label)}
-                />
-          </div>
-          )
+       ? requiredinputContainer : inputContainer;
+  
+       if(label === 'prod_name' || label === 'prod_desc' || label === 'is_active' || label === 'price' || label === 'offer_price'){
+        return (
+          <div className={divStyle} key={i}>
+              <input
+              className={inputStyle}
+              placeholder={fieldLabel[label]}
+              onChange={this.handleInputChange.bind(this, label)}
+              />
+        </div>
+        )
+       }else{
+         return(
+         <form className={divStyle} noValidate>
+          <TextField
+            id="datetime-local"
+            label={fieldLabel[label]}
+            type="datetime-local"
+            defaultValue="2017-11-24T10:30"
+            className={textField}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            onChange={this.handleInputChange.bind(this, label)}
+          />
+        </form>
+         )
+       }
       })
   }
   render() {
@@ -159,13 +179,12 @@ const requiredinputContainer = css({
   height: '56px',
   margin: '0 16px 16px 16px',
   borderRadius: '2px',
-  border: 'solid 1px #ff5630'
+  border: 'solid 2px #ff5630',
 });
 const title = css({
-  paddingLeft: '16px',
   fontFamily: 'Open Sans',
   fontSize: '16px',
-  fontWeight: 600,
+  fontWeight: 700,
   fontStyle: 'normal',
   fontStretch: 'normal',
   lineHeight: 1.5,
@@ -189,9 +208,12 @@ const inputStyle = css({
   '::-webkit-input-placeholder': {
     color: '#c1c7d0'
   },
-  '&:hover': { border: 'solid 1.5px #0151cb' }
+  '&:hover': { border: 'solid 1.5px #787272' }
 });
 
+const textField = css({
+  width: '100%'
+})
 const btn = css({
   display: 'flex',
   justifyContent: 'space-evenly',
