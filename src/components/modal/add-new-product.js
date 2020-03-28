@@ -7,9 +7,6 @@ class AddNewProduct extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tempDistrictsIds: [], // this variable is going to hold temporary data so
-      //that upon clicking on cancel button we will not have any impact on old data
-      tempApps: [],
       tempProd : {
         prod_name : '',
         prod_desc : '',
@@ -21,7 +18,6 @@ class AddNewProduct extends Component {
         created_at : '',
         updated_at : ''
       },
-      showMsg: false,
       requiredStyle: false
     };
     this.node = null;
@@ -53,7 +49,7 @@ class AddNewProduct extends Component {
   handleAddNewProduct = () => {
     let tempProd = this.state.tempProd
     if (tempProd.prod_name.length === 0) {
-      this.setState({ requiredStyle: true, showMsg: true });
+      this.setState({ requiredStyle: true});
     } else {
       this.props.toggleNewProductModal();
       this.props.addNewProduct(tempProd);

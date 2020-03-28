@@ -31,39 +31,6 @@ const StyledTableCell = withStyles(theme => ({
     },
   }))(TableCell);
 
-function createData(prod_name, prod_desc, is_active, price, offer_price, offer_starts_at, offer_ends_at, created_at, updated_at) {
-    return { prod_name, prod_desc, is_active, price, offer_price, offer_starts_at, offer_ends_at, created_at, updated_at };
-  }
-
-  const rows = [
-    createData('Product A', 'Lorum ipsum', 'true' ,'44','34','2020-02-03T00:00:00', '2020-02-03T00:00:00','2020-02-03T00:00:00','2020-02-03T00:00:00'),
-    createData('Product B', 'White Coffee Filters', 'true' ,'44','34','2020-02-03T00:00:00', '2020-02-03T00:00:00','2020-02-03T00:00:00','2020-02-03T00:00:00'),
-    createData('Product C', 'Mr. Coffee Switch ', 'true' ,'18.99','34','2020-02-03T00:00:00', '2020-02-03T00:00:00','2020-02-03T00:00:00','2020-02-03T00:00:00'),
-    createData('Product D', 'Gal Latch', 'false' ,'8.09','5.4','2020-02-03T00:00:00', '2020-02-03T00:00:00','2020-02-03T00:00:00','2020-02-03T00:00:00'),
-    createData('Product E', 'Driscoll Raspberries', 'true' ,'2.99','2.4','2020-02-03T00:00:00', '2020-02-03T00:00:00','2020-02-03T00:00:00','2020-02-03T00:00:00'),
-    createData('Product F', 'Doritos Nacho Cheese Chips', 'true' ,'3.99','3.4','2020-02-03T00:00:00', '2020-02-03T00:00:00','2020-02-03T00:00:00','2020-02-03T00:00:00'),
-    createData('Product G', 'Organic Whole Milk', 'true' ,'3.19','2','2020-02-03T00:00:00', '2020-02-03T00:00:00','2020-02-03T00:00:00','2020-02-03T00:00:00'),
-    createData('Product H', 'Long Puff Sleeve T-Shirt', 'true' ,'17.89','16','2020-02-03T00:00:00', '2020-02-03T00:00:00','2020-02-03T00:00:00','2020-02-03T00:00:00'),
-    createData('Product I', 'Magical Mixer Baby Doll', 'true' ,'24.99','24','2020-02-03T00:00:00', '2020-02-03T00:00:00','2020-02-03T00:00:00','2020-02-03T00:00:00'),
-    createData('Product J', 'Disney Frozen 2 Light-Up Walk & Glow Fire Spirit Salamander Interactive Pet', 'true' ,'44$','34$','2020-02-03T00:00:00', '2020-02-03T00:00:00','2020-02-03T00:00:00','2020-02-03T00:00:00'),
-    createData('Product K', 'Lorum ipsum', 'true' ,'44','34','2020-02-03T00:00:00', '2020-02-03T00:00:00','2020-02-03T00:00:00','2020-02-03T00:00:00'),
-    createData('Product L', 'Lorum ipsum', 'true' ,'44','34','2020-02-03T00:00:00', '2020-02-03T00:00:00','2020-02-03T00:00:00','2020-02-03T00:00:00'),
-    createData('Product M', 'Lorum ipsum', 'true' ,'44','34','2020-02-03T00:00:00', '2020-02-03T00:00:00','2020-02-03T00:00:00','2020-02-03T00:00:00'),
-    createData('Product N', 'Lorum ipsum', 'true' ,'44','34','2020-02-03T00:00:00', '2020-02-03T00:00:00','2020-02-03T00:00:00','2020-02-03T00:00:00'),
-    createData('Product o', 'Lorum ipsum', 'true' ,'44','34','2020-02-03T00:00:00', '2020-02-03T00:00:00','2020-02-03T00:00:00','2020-02-03T00:00:00'),
-    createData('Product p', 'Lorum ipsum', 'true' ,'44','34','2020-02-03T00:00:00', '2020-02-03T00:00:00','2020-02-03T00:00:00','2020-02-03T00:00:00'),
-    createData('Product Q', 'Lorum ipsum', 'true' ,'44','34','2020-02-03T00:00:00', '2020-02-03T00:00:00','2020-02-03T00:00:00','2020-02-03T00:00:00'),
-    createData('Product R', 'Lorum ipsum', 'true' ,'44','34','2020-02-03T00:00:00', '2020-02-03T00:00:00','2020-02-03T00:00:00','2020-02-03T00:00:00'),
-    createData('Product S', 'Lorum ipsum', 'true' ,'44','34','2020-02-03T00:00:00', '2020-02-03T00:00:00','2020-02-03T00:00:00','2020-02-03T00:00:00'),
-    createData('Product T', 'Lorum ipsum', 'true' ,'44','34','2020-02-03T00:00:00', '2020-02-03T00:00:00','2020-02-03T00:00:00','2020-02-03T00:00:00'),
-    createData('Product U', 'Lorum ipsum', 'true' ,'44','34','2020-02-03T00:00:00', '2020-02-03T00:00:00','2020-02-03T00:00:00','2020-02-03T00:00:00'),
-    createData('Product V', 'Lorum ipsum', 'true' ,'44','34','2020-02-03T00:00:00', '2020-02-03T00:00:00','2020-02-03T00:00:00','2020-02-03T00:00:00'),
-    createData('Product W', 'Lorum ipsum', 'true' ,'44','34','2020-02-03T00:00:00', '2020-02-03T00:00:00','2020-02-03T00:00:00','2020-02-03T00:00:00'),
-    createData('Product X', 'Lorum ipsum', 'true' ,'44','34','2020-02-03T00:00:00', '2020-02-03T00:00:00','2020-02-03T00:00:00','2020-02-03T00:00:00'),
-    createData('Product Y', 'Lorum ipsum', 'true' ,'44','34','2020-02-03T00:00:00', '2020-02-03T00:00:00','2020-02-03T00:00:00','2020-02-03T00:00:00'),
-    createData('Product Z', 'Lorum ipsum', 'true' ,'44','34','2020-02-03T00:00:00', '2020-02-03T00:00:00','2020-02-03T00:00:00','2020-02-03T00:00:00'),
-  ];
-
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
     return -1;
@@ -241,7 +208,8 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function Result() {
+export default function Result(props) {
+  let products = props.products;
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('calories');
@@ -258,7 +226,7 @@ export default function Result() {
 
   const handleSelectAllClick = event => {
     if (event.target.checked) {
-      const newSelecteds = rows.map(n => n.prod_name);
+      const newSelecteds = products.map(n => n.prod_name);
       setSelected(newSelecteds);
       return;
     }
@@ -300,8 +268,8 @@ export default function Result() {
 
   const isSelected = name => selected.indexOf(name) !== -1;
 
-  const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
-
+  const emptyRows = rowsPerPage - Math.min(rowsPerPage, products.length - page * rowsPerPage);
+  
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
@@ -320,10 +288,10 @@ export default function Result() {
               orderBy={orderBy}
               onSelectAllClick={handleSelectAllClick}
               onRequestSort={handleRequestSort}
-              rowCount={rows.length}
+              rowCount={products.length}
             />
             <TableBody>
-              {stableSort(rows, getComparator(order, orderBy))
+              {stableSort(products, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
                   const isItemSelected = isSelected(row.prod_name);
@@ -370,7 +338,7 @@ export default function Result() {
         <TablePagination
           rowsPerPageOptions={[5, 10, 25]}
           component="div"
-          count={rows.length}
+          count={products.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onChangePage={handleChangePage}

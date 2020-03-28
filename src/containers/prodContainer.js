@@ -13,7 +13,7 @@ class ProdContainer extends Component {
     return (
       <div>
           <Header addNewProduct={this.props.addNewProduct}/>
-          <Result/>
+          {this.props.products && <Result products={this.props.products}/>}
       </div>
     );
   }
