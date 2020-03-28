@@ -21,6 +21,7 @@ import Switch from '@material-ui/core/Switch';
 import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import Button from '../button/button'
+import AddEditProduct from '../modal/add-edit-product'
 
 const StyledTableCell = withStyles(theme => ({
     head: {
@@ -221,7 +222,9 @@ export default function Result(props) {
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
+  const [showEditModal, setShowEditModal] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [selectedIndex, setSelectedIndex] = React.useState(-1)
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -270,6 +273,28 @@ export default function Result(props) {
   const handleChangeDense = event => {
     setDense(event.target.checked);
   };
+  const handleEditButton = (index) => {
+    setSelectedIndex(index)
+    toggleEditProductModal()
+  };
+  const toggleEditProductModal = () => {
+    setShowEditModal(!showEditModal)
+  }
+
+  const showUpdateProductModal = ()=> {
+    if(showEditModal){
+      return(
+      <div>
+         <AddEditProduct
+         toggleModal={toggleEditProductModal}
+         updateProduct={props.updateProduct}
+         editIndex={selectedIndex}
+         data={products[selectedIndex]}
+         />
+      </div>
+      )
+    }
+  }
 
   const isSelected = name => selected.indexOf(name) !== -1;
 
@@ -278,6 +303,7 @@ export default function Result(props) {
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
+        {showUpdateProductModal()}
         <EnhancedTableToolbar numSelected={selected.length} />
         <TableContainer>
           <Table
@@ -329,7 +355,10 @@ export default function Result(props) {
                       <TableCell align="left">{row.created_at}</TableCell>
                       <TableCell align="left">{row.updated_at}</TableCell>
                       <TableCell align="center">
-                        <Button text="edit" buttonTextStyle={classes.btnStyle} />
+                        <Button text="edit" 
+                        buttonTextStyle={classes.btnStyle}
+                        buttonClickCallback={() => handleEditButton(index)} 
+                        />
                       </TableCell>
                     </TableRow>
                   );

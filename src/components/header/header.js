@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { css } from 'emotion';
 import Button from '../button/button'
-import AddNewProduct from '../modal/add-new-product';
+import AddEditProduct from '../modal/add-edit-product';
 
 export default class Header extends Component {
     constructor(props){
@@ -35,8 +35,8 @@ export default class Header extends Component {
     if(this.state.showModal){
       return(
       <div>
-         <AddNewProduct
-         toggleNewProductModal={this.toggleNewProductModal}
+         <AddEditProduct
+         toggleModal={this.toggleNewProductModal}
          addNewProduct={this.props.addNewProduct}
          />
       </div>

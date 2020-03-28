@@ -4,7 +4,7 @@ import Header from '../components/header/header';
 import Result from '../components/product/result'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { getProductData, addNewProduct } from '../reducer/result'
+import { getProductData, addNewProduct, updateProduct } from '../reducer/result'
 class ProdContainer extends Component {
   componentDidMount() {
     this.props.getProductData();
@@ -13,7 +13,10 @@ class ProdContainer extends Component {
     return (
       <div>
           <Header addNewProduct={this.props.addNewProduct}/>
-          {this.props.products && <Result products={this.props.products}/>}
+          {this.props.products && 
+          <Result 
+          products={this.props.products}
+          updateProduct={this.props.updateProduct}/>}
       </div>
     );
   }
@@ -26,7 +29,8 @@ const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       getProductData,
-      addNewProduct 
+      addNewProduct,
+      updateProduct
     },
     dispatch
   );

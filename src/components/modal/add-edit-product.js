@@ -4,7 +4,7 @@ import { PROD_HEADING } from '../constants/productconst'
 import TextField from '@material-ui/core/TextField';
 import './styles.css';
 
-class AddNewProduct extends Component {
+class AddEditProduct extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -33,7 +33,7 @@ class AddNewProduct extends Component {
   }
 
   handleClickOutside = () => {
-    this.props.toggleNewProductModal();
+    this.props.toggleModal();
   };
 
   handleClick = e => {
@@ -44,17 +44,7 @@ class AddNewProduct extends Component {
   };
 
   handleCancleBtn = () => {
-    this.props.toggleNewProductModal();
-  };
-  
-  handleAddNewProduct = () => {
-    let tempProd = this.state.tempProd
-    if (tempProd.prod_name.length === 0) {
-      this.setState({ requiredStyle: true});
-    } else {
-      this.props.toggleNewProductModal();
-      this.props.addNewProduct(tempProd);
-    }
+    this.props.toggleModal();
   };
 
   handleInputChange = (label, event) => {
@@ -64,7 +54,36 @@ class AddNewProduct extends Component {
     prodCopy.tempProd[inputName] = inputValue;
     this.setState(prodCopy);
   };
-
+  
+  handleAddNewProduct = () => {
+    let tempProd = this.state.tempProd
+    if (tempProd.prod_name.length === 0) {
+      this.setState({ requiredStyle: true});
+    } else {
+      this.props.toggleModal();
+      this.props.addNewProduct(tempProd);
+    }
+  };
+  handleProductUpdate = (editIndex) =>{
+    this.props.toggleModal();
+    this.props.updateProduct(this.state.tempProd,editIndex)
+  }
+  displayAddBtn = (btnText) => {
+    return (
+      <div className={btnStyle} 
+      onClick={() => this.handleAddNewProduct()}>
+        {btnText}
+      </div>
+    )
+  }
+  displayUpdateBtn = (btnText,editIndex) => {
+    return (
+      <div className={btnStyle} 
+      onClick={() => this.handleProductUpdate(editIndex)}>
+        {btnText}
+      </div>
+    )
+  }
   displayInputFields = (fieldLabel) =>{
      return Object.keys(fieldLabel).map((label,i) => {
        const divStyle = 
@@ -83,9 +102,9 @@ class AddNewProduct extends Component {
         )
        }else{
          return(
-         <form className={divStyle} noValidate>
+         <form className={divStyle} noValidate key={i}>
           <TextField
-            id="datetime-local"
+            id={label}
             label={fieldLabel[label]}
             type="datetime-local"
             defaultValue="2017-11-24T10:30"
@@ -100,27 +119,66 @@ class AddNewProduct extends Component {
        }
       })
   }
+  displayEditInputFields = (fieldLabel,data) =>{
+    return Object.keys(fieldLabel).map((label,i) => {
+      const divStyle = 
+      (label === 'prod_name' && this.state.requiredStyle && 
+      this.state.tempProd.prod_name.length === 0) 
+      ? requiredinputContainer : inputContainer;
+ 
+      if(label === 'prod_name' || label === 'prod_desc' || 
+      label === 'is_active' || label === 'price' || label === 'offer_price'){
+       return (
+         <div className={divStyle} key={i}>
+             <input
+             className={inputStyle}
+             placeholder={fieldLabel[label]}
+             onChange={this.handleInputChange.bind(this, label)}
+             defaultValue={data[label]}
+             />
+       </div>
+       )
+      }else{
+        return(
+        <form className={divStyle} noValidate key={i}>
+         <TextField
+           id={label}
+           label={fieldLabel[label]}
+           type="datetime-local"
+           defaultValue={data[label]}
+           className={textField}
+           InputLabelProps={{
+             shrink: true,
+           }}
+           onChange={this.handleInputChange.bind(this, label)}
+         />
+       </form>
+        )
+      }
+     })
+ }
   render() {
     let fieldLable = PROD_HEADING
+    let editIndex = this.props.editIndex; 
+    let data = this.props.data;
+    let btnText = data ? 'UPDATE' : 'ADD'
     const bottomBarStyle = `${btn} ${anchorDown}`;
+    let Heading = data ? 'Edit Product': 'Add New Product';
     return (
       <div className={modalClass}>
         <div className={modalMain} ref={node => (this.node = node)}>
           <div className={container}>
-            <span className={title}>Add New Product</span>
+            <span className={title}>{Heading}</span>
           </div>
           <div className={inputFields + ' thin-vert-scrollbar'}>
-              {this.displayInputFields(fieldLable)}
+              {data ? this.displayEditInputFields(fieldLable, data) : 
+              this.displayInputFields(fieldLable)}
           </div>       
           <div className={bottomBarStyle}>
             <div className={cancleBtn} onClick={() => this.handleCancleBtn()}>
               CANCEL
             </div>
-            <div
-              className={createGroupBtn}
-              onClick={() => this.handleAddNewProduct()}>
-              ADD
-            </div>
+            { data ? this.displayUpdateBtn(btnText, editIndex) :this.displayAddBtn(btnText)}
           </div>
         </div>
       </div>
@@ -240,7 +298,7 @@ const cancleBtn = css({
   cursor: 'pointer'
 });
 
-const createGroupBtn = css({
+const btnStyle = css({
   border: 'solid 1px #ebecf0',
   width: '50%',
   padding: '16px',
@@ -259,4 +317,4 @@ const anchorDown = css({
   position: 'fixed',
   bottom: 0
 });
-export default AddNewProduct;
+export default AddEditProduct;
