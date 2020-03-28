@@ -232,7 +232,7 @@
         "updated_at":"2020-02-03T00:00:00" 
     }, 
     {
-        "prod_name":"Product v",
+        "prod_name":"Product V",
         "prod_desc":"Lorum ipsum",
         "is_active":"true",
         "price":44,
