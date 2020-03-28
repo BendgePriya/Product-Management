@@ -9,7 +9,7 @@ class DeleteConfirmation extends Component {
     this.node = null;
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     document.addEventListener('mousedown', this.handleClick, false);
   }
 
@@ -18,7 +18,7 @@ class DeleteConfirmation extends Component {
   }
 
   handleClickOutside = () => {
-    this.props.onDismissUserDeletion();
+    this.props.toggleDeleteConfirmModal()
   };
 
   handleClick = e => {
@@ -29,11 +29,12 @@ class DeleteConfirmation extends Component {
   };
 
   onCancelClicked() {
-    this.props.onDismissDeleteCancelation();
+    this.props.toggleDeleteConfirmModal()
   }
 
   onDeleteClicked() {
-    this.props.onConfirmed();
+    this.props.onConfirmed(this.props.selected);
+    this.props.toggleDeleteConfirmModal()
   }
 
   render() {

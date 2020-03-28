@@ -5,6 +5,8 @@ export const ADD_NEW_PRODUCT_REQUESTED = 'ADD_NEW_PRODUCT_REQUESTED';
 export const NEW_PRODUCT_RECIEVED = 'NEW_PRODUCT_RECIEVED';
 export const EDIT_PRODUCT_REQUESTED = 'EDIT_PRODUCT_REQUESTED';
 export const PRODUCT_UPDATED = 'PRODUCT_UPDATED';
+export const DELETE_PRODUCT_REQUESTED = 'DELETE_PRODUCT_REQUESTED';
+export const PRODUCT_DELETED = 'PRODUCT_DELETED';
 const Error_MSG ='Sorry! we can not find products at this moment';
 
 const initialState = {
@@ -88,6 +90,26 @@ export default (state = initialState, action) => {
         status: PRODUCT_UPDATED,
         products: tempdata
       }
+    case DELETE_PRODUCT_REQUESTED:
+      return {
+        ...state,
+        status: DELETE_PRODUCT_REQUESTED
+      }
+    case PRODUCT_DELETED:
+      let selectedIds = action.payload.selected
+      let tempArray = state.products.slice(0);
+      selectedIds.forEach((prod) => {
+        tempArray.forEach((obj,i) =>{
+          if(obj.prod_name === prod){
+            tempArray.splice(i, 1);
+          }
+        })
+      })
+      return{
+        ...state,
+        status: PRODUCT_DELETED,
+        products: tempArray
+      }
     default:
       return state;
   }
@@ -145,12 +167,27 @@ export function updateProduct(product,editIndex){
     dispatch({
       type: EDIT_PRODUCT_REQUESTED
     })
-    if(product !== null){
+    if(product !== undefined){
       dispatch({
         type: PRODUCT_UPDATED,
         payload:{
           product: product,
           editIndex:editIndex
+        }
+      })
+    }
+  }
+}
+export function deleteProducts(selected){
+  return dispatch => {
+    dispatch({
+      type: DELETE_PRODUCT_REQUESTED
+    })
+    if(selected !== undefined){
+      dispatch({
+        type: PRODUCT_DELETED,
+        payload: {
+          selected
         }
       })
     }

@@ -166,9 +166,9 @@ const EnhancedTableToolbar = props => {
         </Typography>
       )}
       {numSelected > 0 ? (
-        <Tooltip title="Delete">
+        <Tooltip title="Delete" onClick={handleDeleteProduct}>
           <IconButton aria-label="delete">
-            <DeleteIcon  onClick={handleDeleteProduct}/>
+            <DeleteIcon/>
           </IconButton>
         </Tooltip>
       ) : (
@@ -282,7 +282,7 @@ export default function Result(props) {
   const toggleEditProductModal = () => {
     setShowEditModal(!showEditModal)
   }
-  const handleDeleteProduct =() => {
+  const toggleDeleteConfirmModal =() => {
     setDeleteConfirmModal(!deleteConfirmModal)
   }
   const showUpdateProductModal = ()=> {
@@ -300,15 +300,20 @@ export default function Result(props) {
     }
   }
   const showDeleteConfirmationModal = () =>{
+    let msg = 'Are you sure, you want to delete this message'
     if(deleteConfirmModal){
       return(
         <div>
-          <DeleteConfirmation/>
+          <DeleteConfirmation
+          message={msg}
+          title="Confirmation"
+          onConfirmed= {props.deleteProducts}
+          selected = {selected}
+          toggleDeleteConfirmModal = {toggleDeleteConfirmModal}/>
         </div>
       )
     }
   }
-
   const isSelected = name => selected.indexOf(name) !== -1;
 
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, products.length - page * rowsPerPage);
@@ -318,7 +323,7 @@ export default function Result(props) {
       <Paper className={classes.paper}>
         {showUpdateProductModal()}
         {showDeleteConfirmationModal()}
-        <EnhancedTableToolbar numSelected={selected.length} handleDeleteProduct={handleDeleteProduct} />
+        <EnhancedTableToolbar numSelected={selected.length} handleDeleteProduct={toggleDeleteConfirmModal} />
         <TableContainer>
           <Table
             className={classes.table}
