@@ -62,8 +62,6 @@ import {
     }
   }
   export function updateProduct(product,tcin){
-    console.log("update")
-    console.log(product)
     return dispatch => {
       dispatch({
         type: EDIT_PRODUCT_REQUESTED
