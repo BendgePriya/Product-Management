@@ -61,7 +61,9 @@ import {
       }
     }
   }
-  export function updateProduct(product,editIndex){
+  export function updateProduct(product,tcin){
+    console.log("update")
+    console.log(product)
     return dispatch => {
       dispatch({
         type: EDIT_PRODUCT_REQUESTED
@@ -71,7 +73,7 @@ import {
           type: PRODUCT_UPDATED,
           payload:{
             product: product,
-            editIndex:editIndex
+            tcin:tcin
           }
         })
       }

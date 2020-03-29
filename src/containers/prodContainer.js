@@ -18,7 +18,6 @@ class ProdContainer extends Component {
   render() {
     let source = [];
     let filteredData = this.props.productsData.filteredData
-    console.log(filteredData)
     let products = this.props.productsData.products
     if(products !== undefined){
       products.forEach((obj) => {

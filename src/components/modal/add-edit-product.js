@@ -64,9 +64,9 @@ class AddEditProduct extends Component {
       this.props.addNewProduct(tempProd);
     }
   };
-  handleProductUpdate = (editIndex) =>{
+  handleProductUpdate = () =>{
     this.props.toggleModal();
-    this.props.updateProduct(this.state.tempProd,editIndex)
+    this.props.updateProduct(this.state.tempProd,this.props.tcin)
   }
   displayAddBtn = (btnText) => {
     return (

@@ -227,7 +227,8 @@ export default function Result(props) {
   const [showEditModal, setShowEditModal] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const [selectedIndex, setSelectedIndex] = React.useState(-1)
-
+  const [editRow, setEditRow] = React.useState([])
+  const [tcin, setTcin] = React.useState(0)
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
@@ -243,7 +244,9 @@ export default function Result(props) {
     setSelected([]);
   };
 
-  const handleClick = (event, prod_name) => {
+  const handleClick = (event, prod_name, row) => {
+    setTcin(row.tcin)
+    setEditRow(row)
     const selectedIndex = selected.indexOf(prod_name);
     let newSelected = [];
 
@@ -293,7 +296,8 @@ export default function Result(props) {
          toggleModal={toggleEditProductModal}
          updateProduct={props.updateProduct}
          editIndex={selectedIndex}
-         data={products[selectedIndex]}
+         data={editRow}
+         tcin={tcin}
          />
       </div>
       )
@@ -348,7 +352,7 @@ export default function Result(props) {
                   return (
                     <TableRow
                       hover
-                      onClick={event => handleClick(event, row.prod_name)}
+                      onClick={event => handleClick(event, row.prod_name, row)}
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
