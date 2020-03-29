@@ -23,7 +23,7 @@ import FilterListIcon from '@material-ui/icons/FilterList';
 import Button from '../button/button'
 import AddEditProduct from '../modal/add-edit-product'
 import DeleteConfirmation from '../modal/delete-confirmation-modal';
-
+import { DELETE_CONFIRMATION_MSG, LIST_OF_PRODUCTS } from '../constants/productconst'
 const StyledTableCell = withStyles(theme => ({
     head: {
       backgroundColor: theme.palette.divider,
@@ -162,7 +162,7 @@ const EnhancedTableToolbar = props => {
         </Typography>
       ) : (
         <Typography className={classes.title} variant="subtitle1" id="tableTitle">
-          List of Products
+          {LIST_OF_PRODUCTS}
         </Typography>
       )}
       {numSelected > 0 ? (
@@ -300,12 +300,11 @@ export default function Result(props) {
     }
   }
   const showDeleteConfirmationModal = () =>{
-    let msg = 'Are you sure, you want to delete this message'
     if(deleteConfirmModal){
       return(
         <div>
           <DeleteConfirmation
-          message={msg}
+          message={DELETE_CONFIRMATION_MSG}
           title="Confirmation"
           onConfirmed= {props.deleteProducts}
           selected = {selected}

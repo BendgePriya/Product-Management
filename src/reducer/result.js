@@ -1,13 +1,14 @@
-import { API_ROOT } from '../components/constants/api'
-export const PRODUCT_DATA_REQESTED = 'PRODUCT_DATA_REQESTED';
-export const PRODUCT_DATA_RECIEVED = 'PRODUCT_DATA_RECIEVED';
-export const ADD_NEW_PRODUCT_REQUESTED = 'ADD_NEW_PRODUCT_REQUESTED';
-export const NEW_PRODUCT_RECIEVED = 'NEW_PRODUCT_RECIEVED';
-export const EDIT_PRODUCT_REQUESTED = 'EDIT_PRODUCT_REQUESTED';
-export const PRODUCT_UPDATED = 'PRODUCT_UPDATED';
-export const DELETE_PRODUCT_REQUESTED = 'DELETE_PRODUCT_REQUESTED';
-export const PRODUCT_DELETED = 'PRODUCT_DELETED';
-const Error_MSG ='Sorry! we can not find products at this moment';
+import { 
+  PRODUCT_DATA_REQESTED,
+  PRODUCT_DATA_RECIEVED,
+  ADD_NEW_PRODUCT_REQUESTED,
+  NEW_PRODUCT_RECIEVED,
+  EDIT_PRODUCT_REQUESTED,
+  PRODUCT_UPDATED,
+  DELETE_PRODUCT_REQUESTED,
+  PRODUCT_DELETED,
+  ERROR_MSG
+ } from '../components/constants/productconst'
 
 const initialState = {
   products: []
@@ -39,10 +40,10 @@ export default (state = initialState, action) => {
         status: NEW_PRODUCT_RECIEVED,
         products: tempProd
       }
-    case Error_MSG:
+    case ERROR_MSG:
       return {
         ...state,
-        errMsg: Error_MSG
+        errMsg: ERROR_MSG
       }
     case EDIT_PRODUCT_REQUESTED:
       return {
@@ -114,82 +115,3 @@ export default (state = initialState, action) => {
       return state;
   }
 };
-export function getProductData(){
-  const options = {
-    method: 'GET',
-    headers: {
-      'Content-type': 'application/json'
-    }
-  };
-    return dispatch => {
-        dispatch({
-            type: PRODUCT_DATA_REQESTED
-        })
-        fetch(API_ROOT,options)
-        .then(response =>{
-          if(response.status !== 200){
-            dispatch({
-              type: Error_MSG
-            });
-            return null
-          }
-            return response.json();
-        })
-        .then(json => {
-            if(json !== null){
-                dispatch({
-                    type:PRODUCT_DATA_RECIEVED,
-                    payload:{
-                        products: json['products']
-                    }
-                })
-            }
-        })
-    }
-}
-export function addNewProduct(product){
-  return dispatch => {
-    dispatch({
-      type: ADD_NEW_PRODUCT_REQUESTED
-    })
-    if(product !== null){
-      dispatch({
-        type: NEW_PRODUCT_RECIEVED,
-        payload:{
-          product: product
-        }
-      })
-    }
-  }
-}
-export function updateProduct(product,editIndex){
-  return dispatch => {
-    dispatch({
-      type: EDIT_PRODUCT_REQUESTED
-    })
-    if(product !== undefined){
-      dispatch({
-        type: PRODUCT_UPDATED,
-        payload:{
-          product: product,
-          editIndex:editIndex
-        }
-      })
-    }
-  }
-}
-export function deleteProducts(selected){
-  return dispatch => {
-    dispatch({
-      type: DELETE_PRODUCT_REQUESTED
-    })
-    if(selected !== undefined){
-      dispatch({
-        type: PRODUCT_DELETED,
-        payload: {
-          selected
-        }
-      })
-    }
-  }
-}
