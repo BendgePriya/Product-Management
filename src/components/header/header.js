@@ -85,7 +85,7 @@ filterData(source,value) {
               <div>Product Management UI</div>
             <div className={rightAligned} >
                 <AutoComplete
-                placeholder="Search product Name"
+                placeholder="Filter by product name"
                 // data={this.state.data} //enble it if we want to display suggestions
                 value={this.state.value}
                 onChange={this.onChange.bind(this, source)}

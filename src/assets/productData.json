@@ -1,5 +1,29 @@
 {"products" : [
     {
+        "tcin" : 35,
+        "prod_name":"Fruit Jam",
+        "prod_desc":"Lorum ipsum",
+        "is_active":"true",
+        "price":20.45,
+        "offer_price":18,
+        "offer_starts_at":"2020-02-03T00:00:00", 
+        "offer_ends_at":"2020-02-03T00:00:00",
+        "created_at":"2020-02-03T00:00:00",
+        "updated_at":"2020-02-03T00:00:00" 
+    },
+    {
+        "tcin" : 30,
+        "prod_name":"Queen Set",
+        "prod_desc":"Lorum ipsum",
+        "is_active":"true",
+        "price":20.45,
+        "offer_price":18,
+        "offer_starts_at":"2020-02-03T00:00:00", 
+        "offer_ends_at":"2020-02-03T00:00:00",
+        "created_at":"2020-02-03T00:00:00",
+        "updated_at":"2020-02-03T00:00:00" 
+    },
+    {
         "tcin" : 0,
         "prod_name":"Product A",
         "prod_desc":"Lorum ipsum",
