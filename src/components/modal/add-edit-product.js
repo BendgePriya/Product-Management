@@ -95,7 +95,7 @@ class AddEditProduct extends Component {
           <div className={divStyle} key={i}>
               <input
               className={inputStyle}
-              placeholder={fieldLabel[label]}
+              placeholder={label === 'prod_name' ? fieldLabel[label] + ' *' : fieldLabel[label]}
               onChange={this.handleInputChange.bind(this, label)}
               />
         </div>
