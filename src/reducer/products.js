@@ -7,11 +7,14 @@ import {
   PRODUCT_UPDATED,
   DELETE_PRODUCT_REQUESTED,
   PRODUCT_DELETED,
-  ERROR_MSG
+  ERROR_MSG,
+  FILTERED_DATA_REQUESTED,
+  FILTERED_DATA_RECIEVED
  } from '../components/constants/productconst'
 
 const initialState = {
-  products: []
+  products: [],
+  // filteredData: []
 };
 
 export default (state = initialState, action) => {
@@ -110,6 +113,27 @@ export default (state = initialState, action) => {
         ...state,
         status: PRODUCT_DELETED,
         products: tempArray
+      }
+    case FILTERED_DATA_REQUESTED:
+      return {
+        ...state,
+        status: FILTERED_DATA_REQUESTED
+      }
+    case FILTERED_DATA_RECIEVED:
+      let filterkeys = action.payload.filterkeys
+      let tempProds = state.products.slice(0)
+      let tempFilteredData = []
+      filterkeys.forEach((prodname) => {
+        tempProds.forEach((obj, i) =>{
+          if(obj.prod_name === prodname){
+            tempFilteredData.push(obj)
+          }
+        })
+      })
+      return {
+        ...state,
+        status: FILTERED_DATA_RECIEVED,
+        filteredData: tempFilteredData
       }
     default:
       return state;

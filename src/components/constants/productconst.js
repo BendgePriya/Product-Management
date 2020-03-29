@@ -21,3 +21,5 @@ export const PRODUCT_DELETED = 'PRODUCT_DELETED';
 export const ERROR_MSG ='Sorry! we can not find products at this moment';
 export const DELETE_CONFIRMATION_MSG = 'Are you sure, you want to delete this product';
 export const LIST_OF_PRODUCTS = 'List Of Products';
+export const FILTERED_DATA_REQUESTED = 'FILTERED_DATA_REQUESTED';
+export const FILTERED_DATA_RECIEVED = 'FILTERED_DATA_RECIEVED';

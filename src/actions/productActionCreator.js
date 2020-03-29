@@ -8,7 +8,9 @@ import {
     PRODUCT_UPDATED,
     DELETE_PRODUCT_REQUESTED,
     PRODUCT_DELETED,
-    ERROR_MSG
+    ERROR_MSG,
+    FILTERED_DATA_REQUESTED,
+    FILTERED_DATA_RECIEVED
    } from '../components/constants/productconst';
 
    export function getProductData(){
@@ -85,6 +87,21 @@ import {
           type: PRODUCT_DELETED,
           payload: {
             selected
+          }
+        })
+      }
+    }
+  }
+  export function getFilteredData(filterValues) {
+    return dispatch => {
+      dispatch({
+        type: FILTERED_DATA_REQUESTED
+      })
+      if(filterValues){
+        dispatch({
+          type: FILTERED_DATA_RECIEVED,
+          payload: {
+            filterkeys: filterValues
           }
         })
       }
